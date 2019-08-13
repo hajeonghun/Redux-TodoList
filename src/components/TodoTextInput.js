@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
  
 class TodoTextInput extends Component { 
-    state = {}
+    state = {
+        text: '',
+    }
     static propTypes = { 
         todoAdd: PropTypes.func,
     };
@@ -16,7 +18,11 @@ class TodoTextInput extends Component {
             text: e.target.value
         });
     }
-    btnAdd = () => {
+    btnAdd = () => {        
+        if(this.state.text === ''){
+            alert('일정을 입력하세요');
+            return;
+        }
         this.props.todoAdd(this.state.text);
     }
 
